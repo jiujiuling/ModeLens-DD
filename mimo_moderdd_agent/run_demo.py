@@ -1,0 +1,4 @@
+from src.train_toy import main
+
+if __name__ == "__main__":
+    main()

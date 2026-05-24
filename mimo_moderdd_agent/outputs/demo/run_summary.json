@@ -1,0 +1,28 @@
+{
+  "config": {
+    "dataset": "moons",
+    "epochs": 40,
+    "n_samples": 500,
+    "ipc": 8,
+    "lr": 0.06,
+    "modes": 4,
+    "seed": 7,
+    "device": "cpu",
+    "w_cs": 1.0,
+    "w_cov": 0.25,
+    "w_ent": 0.05,
+    "out": "outputs/demo",
+    "use_llm_agent": false,
+    "threads": 1
+  },
+  "metrics": {
+    "logistic_acc_on_real_test": 0.8971428571428571,
+    "mlp_acc_on_real_test": 0.9885714054107666
+  },
+  "final_losses": {
+    "total": 0.01079137809574604,
+    "cs": 0.004028256516903639,
+    "coverage": 0.026966862380504608,
+    "entropy": 0.0004281039582565427
+  }
+}

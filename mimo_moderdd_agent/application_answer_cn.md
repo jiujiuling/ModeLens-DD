@@ -1,0 +1,3 @@
+我正在开发一个面向数据集蒸馏研究的 Agentic Workbench，项目名为 ModeLens-DD。它的目标是让 AI Agent 辅助完成“研究假设生成—损失函数设计—实验执行—诊断报告”的闭环，而不是只做普通文本问答。核心算法是 mode-aware Rényi / Cauchy-Schwarz distribution matching：先用冻结的随机编码器池把真实数据和合成数据映射到多层特征空间，再按类别构建离线 mode bank，保存每个类别在不同特征层里的模式中心、模式占比和带宽；优化时用核密度内积估计 Cauchy-Schwarz divergence，并加入 mode coverage 与 matrix Rényi entropy matching，避免合成样本只覆盖少数高密度模式。
+
+当前 MVP 已实现一个可运行原型：在二维 toy classification 数据上直接优化合成样本，输出蒸馏前后分布图、loss curve、合成数据文件和 Agent 生成的实验报告。后续会扩展到 CIFAR-100 / Tiny-ImageNet，接入随机 ConvNet bank 与冻结预训练 ResNet 特征，进一步做多层、类条件、模式感知的数据集蒸馏。大模型的主要用途包括：自动阅读论文和代码仓库、生成候选损失函数、检查数学公式和代码实现是否一致、根据训练日志诊断 mode collapse / over-regularization / bandwidth sensitivity，并自动生成下一轮实验计划。因此该项目需要大量 token 支持长上下文论文阅读、代码库分析和多轮实验报告生成。
